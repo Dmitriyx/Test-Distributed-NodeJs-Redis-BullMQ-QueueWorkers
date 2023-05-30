@@ -1,0 +1,17 @@
+{
+  "name": "redisqueueandtwoworkers",
+  "version": "1.0.0",
+  "description": "To start test run commands:\r     - `docker-compose up`\r     - `node worker1/app.js`\r     - `node worker2/app.js`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bullmq": "^3.14.1",
+    "dotenv": "^16.0.3",
+    "ioredis": "^5.3.2"
+  }
+}
