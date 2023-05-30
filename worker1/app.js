@@ -7,13 +7,15 @@ const queuename = 'testqueuename';
 const redisQueue = new bullmq.Queue(queuename, {
     connection: redisConnection
 })
-const redisWorker = new bullmq.Worker(queuename, async job => {
+new bullmq.Worker(queuename, async job => {
     redisConnection.get('currentTime').then(currentTime => {
-        const diff = Date.now() - currentTime;
-
-        console.log('worker1 ----> ', job.data, diff);
-        redisConnection.set('currentTime', Date.now());
-
+        redisConnection.get('sequence').then(sequence => {
+            const diff = Date.now() - currentTime;
+            sequence = sequence || 0;
+            console.log('worker1 ----> ', job.data, diff, 'sequence: ', sequence);
+            redisConnection.set('currentTime', Date.now());
+            redisConnection.set('sequence', +sequence + 1);
+        })
     })
 }, {
     connection: redisConnection,
