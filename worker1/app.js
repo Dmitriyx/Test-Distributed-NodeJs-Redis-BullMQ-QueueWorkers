@@ -26,7 +26,7 @@ redisQueue.add('testjob', {
     data: 'job1',
 }, {
     repeat: {
-        every: 800
+        every: 1000
     },
     removeOnComplete: true,
     removeOnFail: true,

@@ -24,7 +24,7 @@ const redisWorker = new bullmq.Worker(queuename, async job => {
 
 
 redisQueue.add('testjob', {
-    data: 'job2'
+    data: 'job1'
 }, {
     repeat: {
         every: 1000
